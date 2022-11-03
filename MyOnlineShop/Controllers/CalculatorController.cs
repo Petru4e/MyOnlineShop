@@ -4,19 +4,21 @@ namespace MyOnlineShop.Controllers
 {
     public class CalculatorController : Controller
     {
-        public double Index(double a, double b, char c)
+        public string Index(double a, double b, char c)
         {
-            double result= a + b;
+            if (c == '\0') c = '+';
             switch (c)
             {
-                case '-': result = a - b;
-                    break;
-                case '*': result = a * b;
-                    break;
-                default:
-                    break;
+                case '+':
+                    return $"{a} + {b} = {a + b}";
+                case '-':
+                    return $"{a} - {b} = {a - b}";
+                case '*':
+                    return $"{a} * {b} = {a * b}";
+                case '/':
+                    return $"{a} / {b} = {a / b}";
+                default: return "Не верный символ";
             }
-            return result;
         }
     }
 }
